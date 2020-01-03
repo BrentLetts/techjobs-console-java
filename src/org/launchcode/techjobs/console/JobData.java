@@ -21,6 +21,8 @@ public class JobData {
 
     private static ArrayList<HashMap<String, String>> allJobs;
 
+    //TODO RE-DO THE allJobs STUFF IN THE BONUS SECTION
+
     /**
      * Fetch list of all values from loaded data,
      * without duplicates, for a given column.
@@ -81,6 +83,27 @@ public class JobData {
             }
         }
 
+        return jobs;
+    }
+
+    public static ArrayList<HashMap<String, String>> findByValue(String value){
+        //Load data
+        loadData();
+
+        //Create ArrayList to hold results
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+        for(HashMap<String, String> row : allJobs){
+            for(String column : row.keySet()){
+                String aValue = row.get(column).toLowerCase();
+                if(aValue.contains(value.toLowerCase())){
+                    jobs.add(row);
+                    //if the value exists, we'll break out of this loop
+                    //then continue with the next column
+                    break;
+                }
+            }
+        }
         return jobs;
     }
 
