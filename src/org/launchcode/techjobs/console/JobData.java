@@ -21,8 +21,6 @@ public class JobData {
 
     private static ArrayList<HashMap<String, String>> allJobs;
 
-    //TODO RE-DO THE allJobs STUFF IN THE BONUS SECTION
-
     /**
      * Fetch list of all values from loaded data,
      * without duplicates, for a given column.
@@ -49,10 +47,9 @@ public class JobData {
     }
 
     public static ArrayList<HashMap<String, String>> findAll() {
-
         // load data, if not already loaded
         loadData();
-        ArrayList<HashMap<String, String>> list = allJobs;
+        ArrayList<HashMap<String, String>> list = (ArrayList<HashMap<String, String>>) allJobs.clone();
 
         return list;
     }
