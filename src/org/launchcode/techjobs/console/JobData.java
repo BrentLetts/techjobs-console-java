@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -49,10 +50,21 @@ public class JobData {
     public static ArrayList<HashMap<String, String>> findAll() {
         // load data, if not already loaded
         loadData();
-        ArrayList<HashMap<String, String>> list = (ArrayList<HashMap<String, String>>) allJobs.clone();
 
-        return list;
+        //create a new collection to store the clone of allJobs
+        ArrayList<HashMap<String, String>> allJobsClone = new ArrayList<>();
+
+        //Iterate allJobs and add to the clone
+        //This creates a deep clone instead of a shallow clone
+        Iterator<HashMap<String, String>> iterator = allJobs.iterator();
+        while(iterator.hasNext()){
+            //need to cast iterator to HashMap
+            allJobsClone.add((HashMap<String, String>)iterator.next().clone());
+        }
+
+        return allJobsClone;
     }
+
 
     /**
      * Returns results of search the jobs data by key/value, using
