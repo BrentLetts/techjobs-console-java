@@ -86,7 +86,7 @@ public class JobData {
 
         for (HashMap<String, String> row : allJobs) {
 
-            String aValue = row.get(column);
+            String aValue = row.get(column).toLowerCase();
 
             if (aValue.contains(value)) {
                 jobs.add(row);
@@ -106,7 +106,7 @@ public class JobData {
         for(HashMap<String, String> row : allJobs){
             for(String column : row.keySet()){
                 String aValue = row.get(column).toLowerCase();
-                if(aValue.contains(value.toLowerCase())){
+                if(aValue.contains(value)){
                     jobs.add(row);
                     //if the value exists, we'll break out of this loop
                     //then continue with the next column
